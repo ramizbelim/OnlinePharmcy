@@ -1,0 +1,88 @@
+{% extends 'basic.html' %}
+{% block title %}Your Cart - MedWeb{% endblock %}
+{% block body %}
+
+
+{% load static %}
+<br>
+<br>
+<br>
+
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image "  data-bs-bg="{% static 'img/bg/14.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner">
+                        <h1 class="page-title">Order Placed</h1>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="{% url 'home' %}"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                                <li>Order Placed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+{% include 'messages.html' %}
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
+
+<div id="page">
+
+
+
+
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<p class="icon-addcart"><span><i class="icon-check"></i></span></p>
+						<h2 class="mb-4">Thank you for purchasing, Your order is complete</h2>
+						<p>
+							<a href="/"class="btn btn-primary btn-outline-primary">Home</a>
+							</p>
+					</div>
+				</div>
+
+			<form action="/submitreview" method="post" enctype="multipart/form-data" class="contact-form">
+								{% csrf_token %}
+			<div class="row">
+			<div class="col-sm-12 text-center">
+
+
+<h2>Rate your Experience with footwear</h2>
+    <br/>
+
+    <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
+    <br/></div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+				<label for="feedback">Write Your Review:</label>
+				<input type="text" name="feedback" id="feedback" class="form-control">
+				<br/>
+				<button class="btn btn-primary btn-outline-primary">Submit Review</button>
+				</div>
+
+				</div>
+
+			</form>
+
+    <!-- SHOPING CART AREA END -->
+
+
+</div>
+<!-- Body main wrapper end -->
+
+    <!-- All JS Plugins -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'basic.html' %}
+{% block title %}Complete Your Profile - MedWeb{% endblock %}
+{% block body %}
+{% include 'messages.html' %}
+
+{% load static %}
+    <br>
+    <br>
+    <br>
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image "  data-bs-bg="{% static 'img/bg/14.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner">
+                        <h1 class="page-title">Account</h1>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="{% url 'home' %}"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                                <li>Complete Profile</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+
+    <!-- LOGIN AREA START (Register) -->
+    <div class="ltn__login-area pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area text-center">
+                        <h1 class="section-title">Setup <br>Your Account</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
+                             Sit aliquid,  Non distinctio vel iste.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="account-login-inner">
+                        <form action="/completeprofile" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+                            <div class="form-group">
+							<label class="mb-2">Name:</label>
+							<input type="text" class="form-control" placeholder="Name" name="name" required="">
+						</div>
+						<div class="form-group">
+							<label class="mb-2">DOB:</label>
+							<input type="date" class="form-control" placeholder="Date of Birth" name="dob" required="">
+						</div>
+						<div class="form-group">
+                                <label class="mb-2">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required="">
+						</div>
+						<div class="form-group">
+                                <label for="dp">Upload Profile Picture:</label>
+                                <input type="file" name="dp" id="dp" class="form-control">
+						</div>
+                        <br>
+						<div class="form-group">
+
+                               <label>Choose a Area:</label>
+                                    <select  id="areaname" name="areaname">
+                                        {% for a in areadetail %}
+                                      <option value="{{a.id}}">{{a.Area_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                               <label> Choose a City:</label>
+                                    <select id="cityname" name="cityname">
+                                        {% for city in citydetail %}
+                                      <option value="{{city.id}}">{{city.City_name}}</option>
+                                    {% endfor %}
+                                    </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                               <label> Choose a State:</label>
+                                    <select id="statename" name="statename">
+                                        {% for s in statedetail %}
+                                      <option value="{{s.id}}">{{s.State_name}}</option>
+                                        {% endfor %}
+                                    </select>
+
+                            </div>
+                            <br>
+                            <div class="btn-wrapper">
+                                <button class="theme-btn-1 btn reverse-color btn-block" type="submit">CREATE ACCOUNT</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN AREA END -->
+
+
+
+
+</div>
+<!-- Body main wrapper end -->
+
+    <!-- All JS Plugins -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+{% endblock %}
